@@ -1,0 +1,2 @@
+insert into users(email, username, `password`, complete_name, profile_image, description)
+    values('arturo.ponce@correo.com', '@R2d2', '84820493', 'Arturo Ponce', '50-User-Profile-Avatar-Icons-14.svg', 'Hola, soy Arturo');
