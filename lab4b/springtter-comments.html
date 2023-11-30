@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="layout-flow" th:fragment="springtter-comments">
+    <div class="page-header">
+        <div class="back-button">
+            <a th:href="@{/}">
+                <svg th:replace="icons/back-icon :: back-icon"/>
+            </a>
+        </div>
+        <div class="profile-info">
+            <h2>Springt</h2>
+        </div>
+    </div>
+    <div class="tweet-wrapper">
+        <div class="tweet">
+            <div class="tweet-owner">
+                <img th:src="@{/images/{profileimage}(profileimage=${springtterDTO.userProfileImage})}">
+            </div>
+            <div class="tweet-content">
+                <div class="tweet-content-header">
+                    <p>
+                        <b th:text="${springtterDTO.userCompleteName}"></b>
+                    </p>
+                    <p>
+                        <span th:text="${springtterDTO.username}" class="nickname"></span>
+                    </p>
+                </div>
+                <div class="tweet-content-body">
+                    <p th:text="${springtterDTO.message}"></p>
+                    <div th:if="${springtterDTO.image != '' && springt.image != null}" class="tweet-content-body-images">
+                        <div class="tweet-content-body-images-wrapper">
+                            <div class="tweet-content-image-item">
+                                <img th:src="@{/uploads/{imagename}(imagename=${springtterDTO.image})}">
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <span th:text="${#temporals.format(springtterDTO.date, 'dd-MM-yyyy HH:mm')}" class="created-at"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr class="gap">
+        <div id="springt-actions" class="tweet-content-actions">
+            <div class="action-item share">
+                <a th:href="@{/add-reaction/{id}/{userId}/{reaction}(id=${springtterDTO.id}, userId=${springtterDTO.userId}, reaction='Shared')}">
+                    <svg th:replace="icons/respringt-icon :: respringt-icon"/>
+                </a>
+                <span th:text="${springtterDTO.numberOfShares}"></span>
+            </div>
+            <div class="action-item like">
+                <a th:href="@{/add-reaction/{id}/{userId}/{reaction}(id=${springtterDTO.id}, userId=${springtterDTO.userId}, reaction='Like')}">
+                    <svg th:replace="icons/like-icon :: like-icon"/>
+                </a>
+                <span th:text="${springtterDTO.numberOfLikes}"></span>
+            </div>
+        </div>
+        <hr class="gap">
+        <div class="add-tweet">
+            <div class="add-tweet-profile">
+                <img th:src="@{/images/{profileimage}(profileimage=${user.profileImage})}">
+            </div>
+            <div class="add-tweet-content">
+                <form th:action="@{/add-comment}" th:object="${newComment}" method="post">
+                    <div class="tweet-section">
+                        <textarea id="message-springtter" th:field="*{comment}" placeholder="Add your comment"></textarea>
+                    </div>
+                    <div class="controls">
+                        <div>
+                            <span class="validation-error" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></span>
+                        </div>
+                        <div class="controls-submit">
+                            <input id="submit-springtter" type="submit" value="Respond" disabled=""/>
+                        </div>
+                    </div>
+                    <input type="hidden" th:field="*{springtterId}">
+                    <input type="hidden" th:field="*{reactedUserId}">
+                    <input type="hidden" th:field="*{reactionTypeId}">
+                </form>
+            </div>
+        </div>
+        <hr class="gap">
+        <div class="tweet-wrapper">
+            <div th:each="reaction: ${reactionDTOList}" class="tweet">
+                <div class="tweet-owner">
+                    <img th:src="@{/images/{profileimage}(profileimage=${reaction.userProfileImage})}">
+                </div>
+                <div class="tweet-content">
+                    <div class="tweet-content-header">
+                        <p>
+                            <b th:text="${reaction.userCompleteName}"></b>
+                            <span th:text="${reaction.username}" class="nickname"></span>
+                            <span>·</span>
+                            <span th:text="${#temporals.format(reaction.date, 'dd-MM-yyyy HH:mm')}" class="created-at"></span>
+                        </p>
+                    </div>
+                    <div class="tweet-content-body">
+                        <p id="springt-content" th:text="${reaction.comment}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
