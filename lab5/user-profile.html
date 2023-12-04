@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<div class="layout-flow" th:fragment="user-profile">
+    <div class="page-header">
+        <div class="back-button">
+            <a th:href="@{/}">
+                <svg th:replace="icons/back-icon :: back-icon"/>
+            </a>
+        </div>
+        <div class="profile-info">
+            <h2 th:text="${user.completeName}"></h2>
+            <span th:text="${#lists.size(springtterList)} + ' springtters'"></span>
+        </div>
+    </div>
+    <div class="profile">
+        <header>
+            <div class="profile-cover-pic">
+                <img th:src="@{/images/6.jpg}">
+            </div>
+            <div class="profile-header">
+                <div class="profile-actions">
+                    <div class="profile-actions-image">
+                        <img src="https://pbs.twimg.com/profile_images/1344794962697793537/GYEm82zC_400x400.jpg">
+                    </div>
+                    <div class="profile-actions-edit">
+                        <div class="edit-button">Edit profile</div>
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <p th:text="${user.completeName}" class="profile-info-name"></p>
+                    <span th:text="${user.username}" class="profile-info-username"></span>
+                </div>
+                <div th:text="${user.description}" class="profile-description"></div>
+                <div class="profile-created-at">
+                    <span>
+                        <svg th:replace="icons/link-icon :: link-icon"></svg>
+                        <a th:text="${user.email}" th:href="'mailto:' + ${user.email}"></a>
+                    </span>
+                    <span>
+                        <svg th:replace="icons/calendar-icon :: calendar-icon"></svg>
+                        Joined Sep 2022
+                    </span>
+                </div>
+                <div class="profile-follower-counts">
+                    <p>[[${following}]] <span>Following</span></p>
+                    <p>[[${followers}]] <span>Followers</span></p>
+                </div>
+            </div>
+        </header>
+        <div class="profile-body">
+            <div class="sections">
+                <div class="sections-item active">Springtters</div>
+                <div class="sections-item">Springtters &amp; replies</div>
+                <div class="sections-item">Media</div>
+                <div class="sections-item">Likes</div>
+            </div>
+            <div class="tweets-wrapper">
+                <div th:each="springt: ${springtterList}" class="tweet">
+                    <div class="tweet-owner">
+                        <img th:src="@{/images/{profileimage}(profileimage=${springt.userProfileImage})}">
+                    </div>
+                    <div class="tweet-content">
+                        <div class="tweet-content-header">
+                            <p>
+                                <b th:text="${springt.userCompleteName}"></b>
+                                <span th:text="${springt.username}" class="nickname"></span>
+                                <span>·</span>
+                                <span th:text="${#temporals.format(springt.date, 'dd-MM-yyyy HH:mm')}" class="created-at"></span>
+                            </p>
+                        </div>
+                        <div class="tweet-content-body">
+                            <p th:id="'springt-content-'+${springt.id}" th:text="${springt.message}"></p>
+                            <div th:id="'springt-editing-content-'+${springt.id}" class="tweet-content-edit-tweet">
+                                <textarea th:id="'edit-field-'+${springt.id}">[[${springt.message}]]</textarea>
+                            </div>
+                            <div th:if="${springt.image != '' && springt.image != null}" class="tweet-content-body-images">
+                                <div class="tweet-content-body-images-wrapper">
+                                    <div class="tweet-content-image-item">
+                                        <img th:src="@{/uploads/{imagename}(imagename=${springt.image})}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div th:id="'springt-actions-'+${springt.id}" class="tweet-content-actions">
+                            <div class="action-item comment">
+                                <a>
+                                    <svg th:replace="icons/comment-icon :: comment-icon"/>
+                                </a>
+                                <span th:text="${springt.numberOfComments}"></span>
+                            </div>
+                            <div class="action-item share">
+                                <a>
+                                    <svg th:replace="icons/respringt-icon :: respringt-icon"/>
+                                </a>
+                                <span th:text="${springt.numberOfShares}"></span>
+                            </div>
+                            <div class="action-item like">
+                                <a>
+                                    <svg th:replace="icons/like-icon :: like-icon"/>
+                                </a>
+                                <span th:text="${springt.numberOfLikes}"></span>
+                            </div>
+                            <div class="action-item comment">
+                                <svg th:replace="icons/share-icon :: share-icon"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

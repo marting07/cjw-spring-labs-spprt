@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div>
+  <div>
+    <div class="login">
+      <div class="login-header"><h2>Sign up to</h2></div>
+      <div class="login-icon">
+        <a th:href="@{/}">
+          <img class="springtter-logo" th:src="@{/images/CJW-Spring.png}"/>
+        </a>
+      </div>
+      <div th:if="${param.error}">
+        <span class="validation-error">
+          Unable to login. Check your username and password.
+        </span>
+      </div>
+      <div class="login-form">
+        <form method="post" th:action="@{/signup}" id="signupForm">
+          <div class="login-form-item">
+            <input id="email" name="email" type="text" required="" autocomplete="off">
+            <label for="email">Email</label>
+          </div>
+          <div class="login-form-item">
+            <input id="username" name="username" type="text" required="" autocomplete="off">
+            <label for="username">Username</label>
+          </div>
+          <div class="login-form-item">
+            <input id="password" name="password" type="password" required="" autocomplete="off">
+            <label for="password">Password</label>
+          </div>
+          <div class="login-form-item">
+            <input id="completeName" name="completeName" type="text" required="" autocomplete="off">
+            <label for="completeName">Complete Name</label>
+          </div>
+          <textarea id="description" name="description" class="input-as-textarea" placeholder="Description"></textarea>
+          <input class="login-submit" type="submit" value="Sign up" />
+          <div class="login-footer">
+            <p class="footer-links">
+              <span>Forgot password?</span>
+              <span class="dot">·</span>
+              <a th:href="@{/login}">Log in for Springtter</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

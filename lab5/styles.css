@@ -1,0 +1,1231 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+}
+
+*::before, *::after {
+    box-sizing: inherit;
+}
+
+html, body, :root {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    background-color: #15202b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+/* Main styles */
+.layout {
+    min-height: 100%;
+    max-width: 1290px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.layout-sidebar {
+    width: 100%;
+    max-width: 300px;
+}
+
+.layout-sidebar-fixed-container {
+    position: fixed;
+    width: 100%;
+    max-width: inherit;
+}
+
+.layout-flow {
+    border-right: 1px solid #38444d;
+    border-left: 1px solid #38444d;
+    width: 100%;
+    max-width: 660px;
+    min-height: 100vh;
+}
+
+.layout-flow .page-header {
+    border-bottom: 1px solid #38444d;
+    padding: 0.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.layout-flow .page-header h2 {
+    margin: 1rem 0;
+}
+
+.layout-flow .page-header .back-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 20px;
+    padding: 6px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.layout-flow .page-header .back-button:hover {
+    background-color: rgba(29, 161, 242, 0.3);
+}
+
+.layout-flow .page-header .back-button svg {
+    width: 100%;
+    height: 100%;
+    transform: translateX(-3px);
+    fill: #1da1f2;
+}
+
+.layout-flow .page-header .profile-info h2 {
+    margin: 0;
+    margin-bottom: 3px;
+}
+
+.layout-flow .page-header .profile-info span {
+    color: #657786;
+    font-size: 12px;
+}
+
+.layout-for-you {
+    width: 100%;
+    max-width: 330px;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.layout-for-you-fixed {
+    position: fixed;
+    width: 100%;
+    max-width: inherit;
+}
+
+.layout .mobile-menu-toggler {
+    display: none;
+}
+
+@media screen and (max-width: 414px) {
+    .layout-sidebar-fixed-container {
+        background-color: #15202b;
+        transform: translateX(-100%);
+        box-shadow: 0px 0px 0.5rem 0px rgba(170, 184, 194, 0.3);
+        transition: 200ms ease;
+        padding-left: 20px;
+    }
+
+    .layout-sidebar-fixed-container.active {
+        transform: translateX(0%);
+        z-index: 666;
+    }
+
+    .layout-for-you-fixed {
+        display: none;
+    }
+
+    .layout-for-you {
+        display: none;
+        max-width: unset;
+    }
+
+    .layout-sidebar {
+        max-width: 300px;
+        width: unset;
+    }
+
+    .layout .mobile-menu-toggler {
+        display: unset;
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        width: 3rem;
+        height: 3rem;
+        padding: 8px;
+        border-radius: 999px;
+        background-color: #1da1f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 555;
+    }
+
+    .layout .mobile-menu-toggler svg {
+        width: 100%;
+        height: 100%;
+        fill: #fff;
+    }
+}
+
+/* Sidebar styles */
+aside {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+aside .sidebar {
+    height: 100%;
+}
+
+aside .sidebar-nav {
+    position: relative;
+}
+
+aside .sidebar-logo {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 999px;
+    transition: 200ms ease-in-out;
+}
+
+.springtter-logo {
+    width: 100%;
+}
+
+aside .sidebar-logo svg {
+    display: block;
+    width: 100%;
+    fill: #fff;
+}
+
+aside .sidebar-logo:hover {
+    background-color: rgba(29, 161, 242, 0.2);
+}
+
+aside .sidebar-logo:hover svg {
+    fill: #fff;
+}
+
+aside .sidebar-tweet-button {
+    width: 80%;
+    text-align: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    background-color: #1da1f2;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 999px;
+    margin-top: 20px;
+}
+
+aside .mobile-close-menu-button {
+    display: none;
+}
+
+@media screen and (max-width: 414px) {
+    aside .mobile-close-menu-button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        border-radius: 999px;
+        background-color: #1da1f2;
+    }
+
+    aside .mobile-close-menu-button .icon {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    aside .mobile-close-menu-button .icon svg {
+        fill: #fff;
+        width: 100%;
+        height: 100%;
+    }
+
+    aside .mobile-close-menu-button span {
+        color: #fff;
+        font-weight: bold;
+        margin-left: 8px;
+    }
+}
+
+/* List styles */
+a {
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 999px;
+    transition: 120ms ease-in-out;
+    color: #fff;
+}
+
+.sidebar-item-logo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sidebar-item-logo svg {
+    transition: 20ms ease-in-out fill;
+    fill: #fff;
+}
+
+.sidebar-item-content {
+    transition: 20ms ease-in-out color;
+    margin: 0 20px;
+    color: inherit;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(29, 161, 242, 0.2);
+}
+
+.sidebar-item:hover {
+    color: #1da1f2;
+}
+
+.sidebar-item:hover svg {
+    fill: #1da1f2;
+}
+
+.router-link-active .sidebar-item-logo svg, .router-link-exact-active .sidebar-item-logo svg {
+    fill: #1da1f2;
+}
+
+.router-link-active .sidebar-item-content, .router-link-exact-active .sidebar-item-content {
+    color: #1da1f2;
+}
+
+/* Sidebar profile popup */
+.sidebar-profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px 1rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 999px;
+}
+
+.sidebar-profile-wrapper {
+    position: relative;
+}
+
+.sidebar-profile:hover {
+    background-color: rgba(29, 161, 242, 0.3);
+}
+
+.sidebar-profile-no-hover:hover {
+    background-color: transparent;
+}
+
+.sidebar-profile-pic {
+    width: 3rem;
+    height: 3rem;
+    margin: 6px 0;
+}
+
+.sidebar-profile-pic img {
+    border-radius: 999px;
+    width: 100%;
+}
+
+.sidebar-profile-items {
+    margin-left: 10px;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-profile-items .profile-info {
+    user-select: none;
+}
+
+.sidebar-profile-items .profile-info p {
+    margin: 0;
+    color: #fff;
+}
+
+.sidebar-profile-items .profile-info p + p {
+    margin-top: 5px;
+}
+
+.sidebar-profile-items .profile-info p.nickname {
+    color: #657786;
+}
+
+.sidebar-profile-items .more {
+    width: 2rem;
+    height: 2rem;
+}
+
+.sidebar-profile-items .more svg {
+    width: 100%;
+    fill: #fff;
+    display: block;
+}
+
+.sidebar-profile-popup {
+    position: absolute;
+    z-index: 3;
+    width: 105%;
+    bottom: calc(100% + 20px);
+    left: 0;
+    border-radius: 1rem;
+    padding: 10px;
+    background-color: #15202b;
+    box-shadow: 0px 0px 0.5rem 0px rgba(170, 184, 194, 0.3);
+}
+
+.sidebar-profile-popup .popup-spacing {
+    border: none;
+    background-color: rgba(101, 119, 134, 0.2);
+    padding-top: 2px;
+    margin: 3px;
+}
+
+.sidebar-profile-popup .popup-header {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+}
+
+.sidebar-profile-popup .popup-header .more {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.sidebar-profile-popup .popup-header .more svg {
+    fill: #1da1f2;
+    width: 100%;
+}
+
+.sidebar-profile-popup .popup-body-item {
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.sidebar-profile-popup .popup-body-item:hover {
+    background-color: rgba(101, 119, 134, 0.3);
+}
+
+.sidebar-profile-popup .popup-body-item p {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-profile-popup .popup-body-item span {
+    color: #1da1f2;
+}
+
+/* Searchbar */
+.searchbar {
+    background-color: rgba(101, 119, 134, 0.3);
+    padding: 1rem;
+    border-radius: 999px;
+    margin: 1rem 0;
+    margin-top: 0;
+    border: 1px solid rgba(101, 119, 134, 0);
+    transition: border 150ms ease;
+}
+
+.searchbar-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.searchbar-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 1rem;
+}
+
+.searchbar-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+    transition: border 150ms ease;
+}
+
+.searchbar-input {
+    flex-grow: 1;
+}
+
+.searchbar-input input {
+    background: transparent;
+    color: #fff;
+    border: none;
+    width: 100%;
+    display: block;
+}
+
+.searchbar-input input:focus {
+    border: none;
+    outline: none;
+}
+
+.searchbar.focused {
+    border: 1px solid rgba(29, 161, 242, 1);
+}
+
+.searchbar.focused svg {
+    fill: #1da1f2;
+}
+
+/* Trends */
+.trends {
+    background-color: rgba(101, 119, 134, 0.1);
+    border-radius: 1rem;
+}
+
+.trends-header {
+    padding: 1rem;
+}
+
+.trends-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.trends-item {
+    padding: 1rem;
+}
+
+.trends-item h3 {
+    margin: 0;
+    color: #fff;
+}
+
+.trends-item span {
+    color: #657786;
+}
+
+.trends-mb-2 {
+    margin-bottom: 2rem;
+}
+
+.follow-button {
+    width: 120%;
+    text-align: center;
+    padding: 0.75rem;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 999px;
+}
+
+.follow-button-section {
+    margin-right: 1rem;
+}
+
+/* Homepage */
+.add-tweet {
+    padding: 10px 1rem;
+    padding-bottom: 0;
+    display: flex;
+    width: 100%;
+    border-top: 1px solid #38444d;
+    border-bottom: 1px solid #38444d;
+}
+
+.add-tweet-profile {
+    width: 4rem;
+    height: 4rem;
+}
+
+.add-tweet-profile img {
+    border-radius: 999px;
+    width: 100%;
+}
+
+.add-tweet-content {
+    margin-left: 15px;
+    width: 100%;
+}
+
+.add-tweet-content .tweet-section {
+    width: 100%;
+}
+
+.add-tweet-content .tweet-section textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    padding: 12px;
+    font-size: 1.5rem;
+    resize: vertical;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    min-height: 5rem;
+    max-height: 10rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.add-tweet-content .tweet-section textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.add-tweet-content .tweet-section-images {
+    display: flex;
+    padding: 1rem;
+}
+
+.add-tweet-content .tweet-section-images .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-grow: 1;
+}
+
+.add-tweet-content .tweet-section-images .image-container + .image-container {
+    margin-left: 15px;
+}
+
+.add-tweet-content .tweet-section-images .image-container img {
+    width: 100%;
+}
+
+.add-tweet-content .tweet-section-images .image-container .close-button {
+    position: absolute;
+    background-color: rgba(101, 119, 134, 0.3);
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    padding: 7px;
+    display: none;
+}
+
+.add-tweet-content .tweet-section-images .image-container .close-button svg {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+}
+
+.add-tweet-content .controls {
+    border-top: 1px solid #38444d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.add-tweet-content .controls-media {
+    display: flex;
+    gap: 4px;
+}
+
+.add-tweet-content .controls-media-item {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.add-tweet-content .controls-media-item svg {
+    width: 100%;
+    fill: #1da1f2;
+}
+
+.add-tweet-content .controls-media-item:hover {
+    background-color: rgba(29, 161, 242, 0.3);
+}
+
+.validation-error {
+    color: rgb(244, 33, 46);
+}
+
+.validation-success {
+    color: lawngreen;
+}
+
+.add-tweet-content .controls-submit input {
+    cursor: pointer;
+    background-color: #1da1f2;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 16px;
+    outline: none;
+    border: none;
+    border-radius: 9999px;
+}
+
+.add-tweet-content .controls-submit input:disabled {
+    cursor: no-drop;
+    background-color: rgba(29, 161, 242, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+}
+
+hr.gap {
+    background-color: #38444d;
+    padding: 4px 0;
+    margin: 0;
+    border: none;
+}
+
+.tweet {
+    padding: 1rem;
+    display: flex;
+    transition: 100ms ease background-color;
+}
+
+.tweet-edit-button {
+    position: relative;
+}
+
+.tweet-edit-button-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.tweet-edit-button-icon svg {
+    fill: #657786;
+}
+
+.tweet-edit-button-icon:hover {
+    background-color: rgba(29, 161, 242, 0.3);
+}
+
+.tweet-edit-button-icon:hover svg {
+    fill: #1da1f2;
+}
+
+.tweet:hover {
+    background-color: rgba(101, 119, 134, 0.2);
+}
+
+.tweet-owner {
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
+}
+
+.tweet-owner img {
+    width: 100%;
+    border-radius: 999px;
+}
+
+.tweet-content {
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.tweet-content-edit-tweet {
+    border: 1px solid #38444d;
+    margin: 1rem 0;
+    display: none;
+}
+
+.tweet-content-edit-tweet textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    padding: 12px;
+    font-size: 1.2rem;
+    resize: vertical;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    min-height: 5rem;
+    max-height: 10rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.tweet-content-edit-tweet textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.tweet-content-header p {
+    margin: 8px 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.tweet-content-header p span {
+    color: #657786;
+}
+
+.tweet-content-header p span + span {
+    margin-left: 8px;
+}
+
+.tweet-content-body {
+    color: #fff;
+}
+
+.tweet-content-body-images-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(170, 184, 194, 0.5);
+    display: flex;
+}
+
+.tweet-content-body-images-wrapper .tweet-content-image-item {
+    cursor: zoom-in;
+    flex-grow: 1;
+}
+
+.tweet-content-body-images-wrapper .tweet-content-image-item + .tweet-content-image-item {
+    border-left: 1px solid rgba(170, 184, 194, 0.5);
+}
+
+.tweet-content-body-images-wrapper .tweet-content-image-item img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+.tweet-content-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 450px;
+    width: 100%;
+}
+
+.tweet-content-actions .action-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tweet-content-actions .action-item svg {
+    padding: 8px;
+    border-radius: 999px;
+    display: block;
+    width: 36px;
+    height: 36px;
+    fill: #aab8c2;
+}
+
+.tweet-content-actions .action-item span {
+    color: #aab8c2;
+}
+
+.tweet-content-actions .action-item:hover.comment svg {
+    fill: #1da1f2;
+    background-color: rgba(29, 161, 242, 0.2);
+}
+
+.tweet-content-actions .action-item:hover.comment span {
+    color: #1da1f2;
+}
+
+.tweet-content-actions .action-item:hover.share svg {
+    fill: #17bf63;
+    background-color: rgba(23, 191, 99, 0.2);
+}
+
+.tweet-content-actions .action-item:hover.share span {
+    color: #17bf63;
+}
+
+.tweet-content-actions .action-item:hover.like svg {
+    fill: #e0245e;
+    background-color: rgba(224, 36, 94, 0.2);
+}
+
+.tweet-content-actions .action-item:hover.like span {
+    color: #e0245e;
+}
+
+.tweet-content-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -36px;
+    visibility: hidden;
+}
+
+.tweet-content-edit-actions .action-item {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+}
+
+.tweet-content-edit-actions .action-item.cancel {
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+}
+
+.tweet-content-edit-actions .action-item.cancel:hover {
+    background-color: rgba(29, 161, 242, 0.3);
+}
+
+.tweet-content-edit-actions .action-item.save {
+    margin-left: 1rem;
+    background-color: #1da1f2;
+    color: #fff;
+    font-weight: bold;
+    border: 0;
+}
+
+@media screen and (max-width: 414px) {
+    .tweet-content-header span {
+        display: none;
+    }
+
+    .tweet-content-header .created-at {
+        margin-left: unset;
+        display: block;
+        color: rgba(101, 119, 134, 0.5);
+        margin: 5px 0;
+    }
+
+    .tweet-content-header .nickname {
+        display: unset;
+        color: #657786;
+    }
+
+    .tweet-content-actions {
+        max-width: unset;
+    }
+}
+
+/* Edit and Delete Springt */
+.edit-tweet-popup {
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 0.5rem 0px rgba(170, 184, 194, 0.3);
+    display: none;
+}
+
+.edit-tweet-popup-item {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #15202b;
+}
+
+.edit-tweet-popup-item:hover {
+    background-color: rgba(56, 68, 77, 1);
+}
+
+.edit-tweet-popup-item .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.edit-tweet-popup-item .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.edit-tweet-popup-item span {
+    line-height: 1.5rem;
+    margin-left: 1rem;
+    color: #fff;
+}
+
+.edit-tweet-popup-item.delete svg {
+    fill: rgba(224, 36, 94, 1);
+}
+
+.edit-tweet-popup-item.delete span {
+    color: #e0245e;
+}
+
+.edit-tweet-popup-item.edit svg {
+    fill: #1da1f2;
+}
+
+.edit-tweet-popup-item.edit span {
+    color: #1da1f2;
+}
+
+/* Login */
+.login {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.login-icon svg {
+    width: 100%;
+    fill: #1da1f2;
+}
+
+.login-header h2 {
+    font-size: 2rem;
+    font-weight: black;
+    color: #fff;
+}
+
+.login-form {
+    margin-top: 2.5rem;
+}
+
+.login-form > * {
+    margin-top: 2rem;
+}
+
+.login-form-item {
+    position: relative;
+}
+
+.login-form-item + .login-form-item {
+    margin-top: 2.2rem;
+}
+
+.login-form-item input {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.8rem 4px;
+    border: 1px solid rgba(101, 119, 134, 0.3);
+}
+
+.login-form-item input:focus {
+    outline: none;
+}
+
+.login-form-item input:focus ~ label, .login-form-item input:valid ~ label {
+    transform: translate(0, -3rem) scale(0.85);
+    left: 0px;
+}
+
+.login-form-item label {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    color: #fff;
+    transform: translate(0, -50%);
+    transition: 200ms ease;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+}
+
+.login-submit {
+    background-color: #1da1f2;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 999px;
+    padding: 1rem;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 100%;
+    border: 0;
+}
+
+.login-footer, .login-footer > p > a {
+    text-align: center;
+    color: #1da1f2;
+}
+
+.login-footer > p > a {
+    display: inline;
+}
+
+.login-footer span.dot {
+    margin: 0 8px;
+}
+
+@media screen and (max-width: 414px) {
+    .login {
+        width: 80%;
+    }
+}
+
+.footer-links {
+    margin-top: 2rem;
+}
+
+.input-as-textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    display: block;
+    padding: 0.8rem 4px;
+    font-size: 1.2rem;
+    resize: vertical;
+    background-color: transparent;
+    width: 100%;
+    min-height: 5rem;
+    max-height: 10rem;
+    color: #fff;
+    border: 1px solid rgba(101, 119, 134, 0.3);
+    margin-top: 2.2rem;
+}
+
+.input-as-textarea::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* User Profile */
+.profile .profile-cover-pic img {
+    width: 100%;
+}
+
+.profile-header {
+    padding: 1rem;
+}
+
+.profile-cover-pic {
+    border-bottom: 1px solid #38444d;
+}
+
+.profile-cover-pic img {
+    vertical-align: middle;
+}
+
+.profile-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-actions-image {
+    width: 130px;
+    height: 130px;
+    margin-top: -80px;
+}
+
+.profile-actions-image img {
+    border: 1px solid #657786;
+    border-radius: 999px;
+    width: 100%;
+}
+
+.profile-actions-edit .edit-button {
+    border-radius: 999px;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 80ms ease;
+}
+
+.profile-actions-edit .edit-button:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.profile-info {
+    margin-top: 1rem;
+}
+
+.profile-info-name {
+    color: #fff;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.profile-info-username {
+    font-size: 1.2rem;
+    color: #657786;
+}
+
+.profile-description {
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.profile-created-at {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    color: #657786;
+}
+
+.profile-created-at a {
+    color: #1da1f2;
+}
+
+.profile-created-at a:hover {
+    text-decoration: underline;
+}
+
+.profile-created-at span {
+    display: flex;
+    align-items: center;
+}
+
+.profile-created-at span + span {
+    margin-left: 2rem;
+}
+
+.profile-created-at span svg {
+    fill: #657786;
+    margin-right: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.profile-follower-counts {
+    display: flex;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.profile-follower-counts p {
+    margin: 0;
+}
+
+.profile-follower-counts p + p {
+    margin-left: 1rem;
+}
+
+.profile-follower-counts p span {
+    color: #657786;
+}
+
+.profile-follower-counts p:hover {
+    text-decoration: underline;
+}
+
+.profile-body .sections {
+    border-bottom: 1px solid #38444d;
+    display: flex;
+}
+
+.profile-body .sections-item {
+    width: calc(100%/4);
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #657786;
+    font-weight: bold;
+}
+
+.profile-body .sections-item.active {
+    border-bottom: 2px solid #1da1f2;
+    color: #1da1f2;
+}
